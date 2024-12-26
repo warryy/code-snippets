@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#/">home</a></li>
+      <li><a href="#/about">about</a></li>
+    </ul>
+    <div id="app">hello world</div>
+    <script src="hash-route.js"></script>
+    <script>
+      const hashRoute = new HashRoute();
+      hashRoute.route("/", () => {
+        document.querySelector("#app").innerHTML = "hello, I'm home page";
+      });
+
+      hashRoute.route("/about", () => {
+        document.querySelector("#app").innerHTML = "hello, I'm about page";
+      });
+      hashRoute.init();
+    </script>
+  </body>
+</html>
