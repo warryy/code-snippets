@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>域名容灾demo</title>
+    <script>
+      const domainList = ["http://ali.com", "http://127.0.0.1:9000"];
+      const scriptIndexMap = {};
+      const fetchNewUrl = (e) => {
+        const src = e.target.src;
+        e.target.remove();
+        const urlObj = new URL(src);
+        const pathname = urlObj.pathname;
+
+        if (!pathname) {
+          console.log("pathname错误");
+          return;
+        }
+
+        // 获取本次的域名index
+        const validIndex = scriptIndexMap[pathname] ?? 0;
+
+        // 超了, 所有的域名都试过了
+        if (validIndex >= domainList.length) {
+          console.log("===所有域名均不可访问");
+          return;
+        }
+
+        const url = domainList[validIndex] + pathname;
+
+        // const script = document.createElement("script");
+        // script.src = url;
+        // document.body.insertBefore(script, errScriptDom);
+        document.write(`<script src="${url}"><\/script>`);
+
+        // 更新脚本对应的域名index
+        scriptIndexMap[pathname] = validIndex + 1;
+      };
+
+      window.addEventListener(
+        "error",
+        (e) => {
+          /**
+           * 不处理的错误类型
+           *
+           * 1. 脚本错误
+           * 2. 非脚本错误
+           */
+          if (e instanceof ErrorEvent || e.target.tagName !== "SCRIPT") {
+            return;
+          }
+
+          console.log("===资源", e.target.src, "加载失败");
+
+          fetchNewUrl(e);
+        },
+        /**
+         * error 不能冒泡, 所以捕获阶段就要处理错误
+         * 不过改成 false 也没问题, 因为针对这种不能冒泡的事件, 这个配置不生效
+         */
+        true
+      );
+    </script>
+  </head>
+  <body>
+    <p>这个demo可以更健全, 例如: 重试次数, defer, async 等script标签的属性, webpack插件的编写等</p>
+    <code> cd mini-demo/domain-failover/mini && node ./server.js </code>
+    <script src="https://www.baidu.com/static2.js"></script>
+    <script src="https://www.baidu.com/static.js"></script>
+    <script>
+      throw "脚本内部错误";
+    </script>
+  </body>
+</html>

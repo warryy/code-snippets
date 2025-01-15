@@ -1,0 +1,11 @@
+node_modules
+.umirc.local.ts
+.umi
+.umi-production
+.umi-test
+.umi
+.umi-production
+.umi-test
+dist
+.mfsu
+.swc
