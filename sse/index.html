@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <code></code>
+    <script>
+      // 用js原生的方法实现sse
+      const eventSource = new EventSource("http://127.0.0.1:3000/sse");
+      const codeDom = document.querySelector("code");
+
+      eventSource.onmessage = (event) => {
+        console.log('recived: ', event)
+        codeDom.innerText += event.data.replaceAll("\\n", "\n");
+      };
+
+      eventSource.onerror = (error) => {
+        console.error("EventSource failed:", error);
+        eventSource.close();
+      };
+    </script>
+  </body>
+</html>
