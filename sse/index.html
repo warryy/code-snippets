@@ -6,16 +6,24 @@
     <title>Document</title>
   </head>
   <body>
-    <code></code>
+    <div id="content"></div>
     <script>
       // 用js原生的方法实现sse
       const eventSource = new EventSource("http://127.0.0.1:3000/sse");
-      const codeDom = document.querySelector("code");
+      const codeDom = document.querySelector("#content");
 
       eventSource.onmessage = (event) => {
-        console.log('recived: ', event)
-        codeDom.innerText += event.data.replaceAll("\\n", "\n");
+        console.log('message recived: ', event)
+        const b = document.createElement('strong')
+        b.innerText = event.data
+        codeDom.appendChild(b)
       };
+
+      // 使用 addEventListener 监听特定类型的消息
+      eventSource.addEventListener('haha', (event) => {
+        console.log('haha received: ', event);
+        codeDom.innerHTML += event.data.replaceAll("\\n", "<br>");
+      });
 
       eventSource.onerror = (error) => {
         console.error("EventSource failed:", error);

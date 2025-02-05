@@ -36,7 +36,8 @@ const server = http.createServer(async (req, res) => {
           console.log("===chunk", chunk);
           // 将换行符转换为特殊字符序列，在客户端再转换回来
           const encodedChunk = chunk.replace(/\n/g, "\\n");
-          resolve(res.write(`data: ${encodedChunk}\n\n`));
+          resolve(res.write(`data: 第${i}块数据:\n\n`));
+          resolve(res.write(`event: haha\ndata: ${encodedChunk}\n\n`));
         }, 200)
       ); // 模拟延迟
     }
