@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1739434772848" clover="3.2.0">
+  <project timestamp="1739434772848" name="All files">
+    <metrics statements="28" coveredstatements="23" conditionals="17" coveredconditionals="12" methods="7" coveredmethods="6" elements="52" coveredelements="41" complexity="0" loc="28" ncloc="28" packages="1" files="1" classes="1"/>
+    <file name="intensity-segments.ts" path="/Users/warryy/code/github/jerry-base/src/utils/intensity-segments.ts">
+      <metrics statements="28" coveredstatements="23" conditionals="17" coveredconditionals="12" methods="7" coveredmethods="6"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="18" count="7" type="stmt"/>
+      <line num="20" count="7" type="stmt"/>
+      <line num="32" count="0" type="stmt"/>
+      <line num="33" count="0" type="cond" truecount="0" falsecount="3"/>
+      <line num="34" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="40" count="0" type="stmt"/>
+      <line num="49" count="26" type="stmt"/>
+      <line num="50" count="8" type="stmt"/>
+      <line num="51" count="8" type="stmt"/>
+      <line num="54" count="8" type="stmt"/>
+      <line num="56" count="22" type="cond" truecount="1" falsecount="1"/>
+      <line num="58" count="22" type="cond" truecount="1" falsecount="0"/>
+      <line num="62" count="22" type="stmt"/>
+      <line num="67" count="8" type="stmt"/>
+      <line num="68" count="8" type="stmt"/>
+      <line num="69" count="22" type="cond" truecount="1" falsecount="0"/>
+      <line num="73" count="22" type="stmt"/>
+      <line num="77" count="8" type="stmt"/>
+      <line num="88" count="14" type="cond" truecount="2" falsecount="0"/>
+      <line num="90" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="92" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="93" count="2" type="stmt"/>
+      <line num="96" count="2" type="stmt"/>
+      <line num="100" count="10" type="stmt"/>
+      <line num="108" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>
