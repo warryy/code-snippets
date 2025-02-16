@@ -7,6 +7,12 @@ describe('IntensitySegments', () => {
     intensitySegments = new IntensitySegments();
   });
 
+  test('set', () => {
+    intensitySegments.set(10, 30, 1);
+    intensitySegments.set(20, 25, 2);
+    expect(intensitySegments.toString()).toBe('[[10,1],[20,2],[25,1],[30,0]]');
+  });
+
   test('should handle overlapping add and set operations', () => {
     intensitySegments.clear();
     intensitySegments.add(10, 30, 1);

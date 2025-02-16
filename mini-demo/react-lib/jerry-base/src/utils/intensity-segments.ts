@@ -1,10 +1,13 @@
 export class IntensitySegments {
   // 使用Map来存储区间的起始点和对应的强度变化
   private segments: Map<number, number>;
+  private cache: false | string = false;
 
   constructor() {
     // 初始化一个空的Map，用于存储区间的强度变化
     this.segments = new Map<number, number>();
+    // 用于缓存toString的结果
+    this.cache = false;
   }
 
   /**
@@ -18,6 +21,7 @@ export class IntensitySegments {
     this._updateSegment(from, amount);
     // 在结束点减少相同的强度，以便在该点之后强度恢复
     this._updateSegment(to, -amount);
+    this.cache = false;
   }
 
   /**
@@ -28,16 +32,31 @@ export class IntensitySegments {
    * @param {number} amount - 要设置的强度值
    */
   set(from: number, to: number, amount: number): void {
+    const descKeys = Array.from(this.segments.keys()).sort((a, b) => b - a);
+    const moseCloseToKey = descKeys.find((key) => key <= to);
+
+    const moseCloseFromKey = descKeys.find((key) => key <= from);
+    const changeToValue =
+      typeof moseCloseToKey === 'number'
+        ? this.segments.get(moseCloseToKey) || 0
+        : 0;
+    const changeFromValue =
+      typeof moseCloseFromKey === 'number'
+        ? this.segments.get(moseCloseFromKey) || 0
+        : 0;
+
     // 删除该区间内的所有强度变化
     for (let key of Array.from(this.segments.keys())) {
       if (key >= from && key < to) {
         this.segments.delete(key);
       }
     }
+
     // 在起始点设置新的强度
-    this._updateSegment(from, amount);
-    // 在结束点设置强度为0，表示该点之后强度不变
-    this._updateSegment(to, 0);
+    this._updateSegment(from, amount - changeFromValue);
+    // 在结束点恢复之前的区间变化，表示该点之后强度不变
+    this._updateSegment(to, -(amount - changeToValue));
+    this.cache = false;
   }
 
   /**
@@ -45,6 +64,9 @@ export class IntensitySegments {
    * @returns {string} - 区间和强度的JSON字符串
    */
   toString(): string {
+    if (this.cache !== false) {
+      return this.cache;
+    }
     // 获取所有的起始点并按升序排序
     const sortedKeys = Array.from(this.segments.keys()).sort((a, b) => a - b);
     const result: [number, number][] = [];
@@ -74,7 +96,8 @@ export class IntensitySegments {
       }
     }
     // 返回合并后的结果的JSON字符串
-    return JSON.stringify(mergedResult);
+    this.cache = JSON.stringify(mergedResult);
+    return this.cache;
   }
 
   /**
@@ -106,5 +129,6 @@ export class IntensitySegments {
    */
   clear(): void {
     this.segments.clear();
+    this.cache = false;
   }
 }
