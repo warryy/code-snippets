@@ -35,7 +35,7 @@ function myBind(fn, context, ...args) {
  * 2. 传递参数
  */
 function myCall(fn, context, ...args) {
-  const fnSymbol = Symbol("fn");
+  const fnSymbol = Symbol('fn');
   context[fnSymbol] = fn;
   const res = context[fnSymbol](...args);
   delete context[fnSymbol];
@@ -48,7 +48,7 @@ function myCall(fn, context, ...args) {
  * 2. 传递参数
  */
 function myApply(fn, context, args) {
-  const fnSymbol = Symbol("fn");
+  const fnSymbol = Symbol('fn');
   context[fnSymbol] = fn;
   const res = context[fnSymbol](...args);
   delete context[fnSymbol];

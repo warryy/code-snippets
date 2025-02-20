@@ -17,4 +17,3 @@
 ### compilerOptions.strict 属性
 
 [compilerOptions.strict](./typescript/compilerOptions/strict/index.ts)
-

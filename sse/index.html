@@ -13,15 +13,15 @@
       const codeDom = document.querySelector("#content");
 
       eventSource.onmessage = (event) => {
-        console.log('message recived: ', event)
-        const b = document.createElement('strong')
-        b.innerText = event.data
-        codeDom.appendChild(b)
+        console.log("message recived: ", event);
+        const b = document.createElement("strong");
+        b.innerText = event.data;
+        codeDom.appendChild(b);
       };
 
       // 使用 addEventListener 监听特定类型的消息
-      eventSource.addEventListener('haha', (event) => {
-        console.log('haha received: ', event);
+      eventSource.addEventListener("haha", (event) => {
+        console.log("haha received: ", event);
         codeDom.innerHTML += event.data.replaceAll("\\n", "<br>");
       });
 
