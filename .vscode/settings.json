@@ -26,10 +26,39 @@
   "[sass]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.tabSize": 2,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.formatOnSave": true,
   "files.exclude": {
     "node_modules": true,
     "dist": true
-  }
+  },
+  "workbench.editor.enablePreview": false,
+  "editor.minimap.enabled": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "notebook.stickyScroll.enabled": true,
+  "editor.linkedEditing": true,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "editor.lineNumbers": "relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.codeActionsOnSave.rules": null,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "css",
+    "less",
+    "json",
+    "jsonc",
+    "html"
+  ],
+  "workbench.activityBar.orientation": "vertical"
 }
