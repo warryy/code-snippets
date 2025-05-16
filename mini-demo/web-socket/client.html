@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket客户端演示</title>
+    <link rel="stylesheet" href="client.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>WebSocket客户端演示</h1>
+
+      <!-- 用户名输入界面 -->
+      <div id="usernameForm" class="username-form">
+        <h3>请输入您的用户名</h3>
+        <div class="input-group">
+          <input type="text" id="usernameInput" placeholder="请输入用户名..." maxlength="20" />
+          <button id="joinButton">加入聊天</button>
+        </div>
+      </div>
+
+      <!-- 聊天界面 -->
+      <div id="chatArea" class="chat-area">
+        <div id="userInfo" class="user-info"></div>
+
+        <div id="status" class="status disconnected">未连接</div>
+
+        <div id="messages" class="messages"></div>
+
+        <div class="input-group">
+          <input type="text" id="messageInput" placeholder="输入消息..." />
+          <button id="sendButton" disabled>发送</button>
+          <button id="connectButton">断开连接</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="client.js"></script>
+  </body>
+</html>
