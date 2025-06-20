@@ -44,7 +44,7 @@
   "notebook.stickyScroll.enabled": true,
   "editor.linkedEditing": true,
   "diffEditor.ignoreTrimWhitespace": true,
-  "editor.lineNumbers": "relative",
+  // "editor.lineNumbers": "relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "eslint.codeActionsOnSave.rules": null,
