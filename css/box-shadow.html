@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="press-btn">按钮</button>
+    <style>
+      body {
+        text-align: center;
+      }
+      .press-btn {
+        margin-top: 300px;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 24px;
+        font-size: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.1s, transform 0.1s;
+        cursor: pointer;
+      }
+      .press-btn:active {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        transform: scale(0.9);
+      }
+    </style>
+    <script>
+      const box = document.querySelector('.js-box');
+      box.addEventListener('mousedown', () => {
+        box.style.boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.5)';
+      });
+      box.addEventListener('mouseup', () => {
+        box.style.boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.5)';
+      });
+    </script>
+  </body>
+</html>
