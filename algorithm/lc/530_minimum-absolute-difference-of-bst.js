@@ -37,6 +37,7 @@ var getMinimumDifference = function (root) {
   return min;
 };
 
+// 递归版本的深度优先遍历
 var getMinimumDifference = function (root) {
   let min = Infinity;
 
@@ -50,6 +51,29 @@ var getMinimumDifference = function (root) {
     pre = node.val;
     dfs(node.right);
   };
+  dfs(root);
+  return min;
+};
+
+// 迭代版本的深度优先遍历
+var getMinimumDifference = function (root) {
+  let min = Infinity;
+
+  let pre = -1;
+  let cur = root;
+  const queue = [];
+
+  while (cur || queue.length) {
+    while (cur) {
+      queue.push(cur);
+      cur = cur.left;
+    }
+
+    const node = queue.pop();
+    min = pre === -1 ? min : Math.min(node.val - pre, min);
+    pre = node.val;
+    cur = node.right;
+  }
 
   return min;
 };
