@@ -36,7 +36,7 @@ var searchInsert = function (nums, target) {
     if (e === s) {
       return s;
     }
-    const mid = Math.floor((e - s) / 2);
+    const mid = Math.floor((e - s) / 2) + s;
     if (ns[mid] === t) {
       return mid;
     }
@@ -48,6 +48,7 @@ var searchInsert = function (nums, target) {
   return search(nums, target, 0, nums.length);
 };
 
-var nums = [1, 3, 5, 6],
-  target = 2;
+(nums = [1, 3, 5, 6]), (target = 2);
 console.log('1: ', searchInsert(nums, target));
+(nums = [1, 3, 5, 6]), (target = 7);
+console.log('4: ', searchInsert(nums, target));
